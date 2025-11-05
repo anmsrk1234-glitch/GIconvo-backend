@@ -34,12 +34,10 @@ def get_db():
 # ------------------------------
 # Route Endpoint
 # ------------------------------
-@app.head("/")
-def root_head():
-    return ""  # lightweight check for UptimeRobot
-
-@app.get("/")
-def root():
+@app.api_route("/", methods=["GET", "HEAD"])
+def root(request: Request):
+    if request.method == "HEAD":
+        return ""  # respond instantly for UptimeRobot or Render check
     return {"message": "Welcome to Convo Lab AI Backend"}
 
 # ------------------------------
