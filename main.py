@@ -34,6 +34,10 @@ def get_db():
 # ------------------------------
 # Route Endpoint
 # ------------------------------
+@app.head("/")
+def root_head():
+    return ""  # lightweight check for UptimeRobot
+
 @app.get("/")
 def root():
     return {"message": "Welcome to Convo Lab AI Backend"}
